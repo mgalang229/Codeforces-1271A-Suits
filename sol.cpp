@@ -5,30 +5,12 @@ using namespace std;
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	int a, b, c, e, d, f;
+	long long a, b, c, e, d, f;
 	cin >> a >> b >> c >> d >> e >> f;
-	long long ans = 0;
-	while (d--) {
-		if (a && b && c) {
-			if (e > f) {
-				ans += e;
-				a--;
-			} else {
-				ans += f;
-				b--;
-				c--;
-			}
-		} else if (a) {
-			ans += e;
-			a--;
-		} else if (b && c) {
-			ans += f;
-			b--;
-			c--;
-		} else {
-			break;
-		}
-	}
-	cout << ans << '\n';
+	long long n1 = min(a, d);
+	long long ans1 = (n1 * e) + min(b, min(c, d - n1)) * f;
+	long long n2 = min(b, min(c, d));
+	long long ans2 = (n2 * f) + (min(a, d - n2) * e);
+	cout << max(ans1, ans2) << '\n';
 	return 0;
 }
